@@ -29,7 +29,7 @@ app.use('/', express.static('public'));
 
 //get post request from client with input values to send to twilio
 app.post('/twilio', function (req, res) {
-  console.log('twilio hit ' + req.body.num); //
+  console.log('twilio hit ' + req.body); //
   sendText(req.body.name, req.body.num, req.body.txt); //pass values to sendText method
 });
 
