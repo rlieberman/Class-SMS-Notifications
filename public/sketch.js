@@ -9,7 +9,7 @@ var phoneNumbers = {
   "JohnDoe":"+19175558601"
 };
 
-var base_url = '';
+var base_url = 'http://class-notifications.herokuapp.com/';
 
 $(document).ready(function(){
 
@@ -51,7 +51,7 @@ $(document).ready(function(){
 
     //make a post request so we can grab inputs to send to twilio
     $.ajax({
-        "url": "http://class-notifications.herokuapp.com/twilio",
+        "url": base_url + "twilio",
         "method": "POST",
         "data": data
       })
