@@ -35,24 +35,35 @@ app.post('/twilio', function (req, res) {
 
 
 
+
+
 function sendText(name, num, txt){
 
   //Send an SMS text message
-  client.sendMessage({
-
+  client.messages.create({
       to: num, // Any number Twilio can deliver to
       from: '+13472692702', //our twilio number
       body: name + ', ' + txt // body of the SMS message
+}, function(err, message) {
+    process.stdout.write(message.sid);
+});
 
-  }, function(err, responseData) { //this function is executed when a response is received from Twilio
+  // //Send an SMS text message
+  // client.sendMessage({
 
-      if (!err) { // "err" is an error received during the request, so if there's no error
+  //     to: num, // Any number Twilio can deliver to
+  //     from: '+13472692702', //our twilio number
+  //     body: name + ', ' + txt // body of the SMS message
 
-        // "responseData" is a JavaScript object containing data received from Twilio.
-        console.log("This is a message from: " + responseData.from);
-        console.log("Their message is " + responseData.body); 
+  // }, function(err, responseData) { //this function is executed when a response is received from Twilio
 
-      }
-    });
+  //     if (!err) { // "err" is an error received during the request, so if there's no error
+
+  //       // "responseData" is a JavaScript object containing data received from Twilio.
+  //       console.log("This is a message from: " + responseData.from);
+  //       console.log("Their message is " + responseData.body); 
+
+  //     }
+  //   });
 }
 
