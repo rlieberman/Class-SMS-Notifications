@@ -9,7 +9,7 @@ var phoneNumbers = {
   "JohnDoe":"+19175558601"
 };
 
-
+var base_url = 'http://class-notifications.herokuapp.com/';
 
 $(document).ready(function(){
 
@@ -29,17 +29,6 @@ $(document).ready(function(){
   //when the button is clicked, call getVals
   bttn.on('click', getInputVals); 
 
-  function test(){
-    $.ajax({
-        "url": "http://localhost:3000/twilio",
-        "method": "POST",
-        "data": { "name": "abhishek" }
-      })
-
-      .done(function(msg){
-        console.log("done")
-      })
-  }
 
   //function to grab the values from the radio button and the input field
   function getInputVals () {
@@ -62,7 +51,7 @@ $(document).ready(function(){
 
     //make a post request so we can grab inputs to send to twilio
     $.ajax({
-        "url": "http://localhost:3000/twilio",
+        "url": base_url + "twilio",
         "method": "POST",
         "data": data
       })
